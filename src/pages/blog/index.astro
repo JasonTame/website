@@ -1,71 +1,55 @@
 ---
 import { getCollection } from "astro:content";
-import BaseHead from "../../components/BaseHead.astro";
-import Footer from "../../components/Footer.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
-import Header from "../../components/Header.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+
+import Page from "../../layouts/Page.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={`Blog | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-  </head>
-  <body class="bg-background text-foreground min-h-screen">
-    <Header />
-    <main class="max-w-4xl
-    mx-auto
-    px-4
-    py-8">
-      <div class="max-w-2xl mx-auto">
-        <h1 class="text-4xl font-bold mb-8 text-foreground">Blog</h1>
+<Page>
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-4xl font-bold mb-8 text-foreground">Blog</h1>
 
-        <div class="space-y-8">
-          {
-            posts.map((post) => (
-              <article class="group">
-                <a href={`/blog/${post.id}/`} class="block">
-                  <h2 class="text-xl font-semibold text-foreground group-hover:text-accent transition-colors mb-2 underline">
-                    {post.data.title}
-                  </h2>
-                  <p class="text-muted-foreground mb-4 leading-relaxed">
-                    {post.data.description}
-                  </p>
-                  <time class="text-sm text-muted-foreground">
-                    <FormattedDate date={post.data.pubDate} />
-                  </time>
-                </a>
+    <div class="space-y-8">
+      {
+        posts.map((post) => (
+          <article class="group">
+            <a href={`/blog/${post.id}/`} class="block">
+              <h2 class="text-xl font-semibold text-foreground group-hover:text-accent transition-colors mb-2 underline">
+                {post.data.title}
+              </h2>
+              <p class="text-muted-foreground mb-4 leading-relaxed">
+                {post.data.description}
+              </p>
+              <time class="text-sm text-muted-foreground">
+                <FormattedDate date={post.data.pubDate} />
+              </time>
+            </a>
 
-                {/* Decorative separator */}
-                <div class="mt-8 text-center">
-                  <div class="inline-block">
-                    <svg
-                      width="120"
-                      height="8"
-                      viewBox="0 0 120 8"
-                      class="text-muted"
-                    >
-                      <path
-                        d="M0 4 Q30 0 60 4 T120 4"
-                        stroke="currentColor"
-                        fill="none"
-                        stroke-width="1"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-
-      <Footer />
-    </main>
-  </body>
-</html>
+            {/* Decorative separator */}
+            <div class="mt-8 text-center">
+              <div class="inline-block">
+                <svg
+                  width="120"
+                  height="8"
+                  viewBox="0 0 120 8"
+                  class="text-muted"
+                >
+                  <path
+                    d="M0 4 Q30 0 60 4 T120 4"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-width="1"
+                  />
+                </svg>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</Page>
