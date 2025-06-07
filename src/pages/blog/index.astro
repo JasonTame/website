@@ -1,29 +1,26 @@
 ---
-import FormattedDate from "@/components/FormattedDate.astro";
-import Page from "@/layouts/Page.astro";
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content'
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+import FormattedDate from '@/components/FormattedDate.astro'
+import Page from '@/layouts/Page.astro'
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 ---
 
 <Page>
-  <div class="max-w-2xl mx-auto">
-    <h1 class="text-4xl font-bold mb-8 text-foreground">Blog</h1>
+  <div class="mx-auto max-w-2xl">
+    <h1 class="text-foreground mb-8 text-4xl font-bold">Blog</h1>
 
     <div class="space-y-8">
       {
-        posts.map((post) => (
+        posts.map(post => (
           <article class="group">
             <a href={`/blog/${post.id}/`} class="block">
-              <h2 class="text-xl font-semibold text-foreground group-hover:text-accent transition-colors mb-2 underline">
+              <h2 class="group-hover:text-accent not-odd:text-foreground mb-2 text-xl font-semibold underline transition-colors">
                 {post.data.title}
               </h2>
-              <p class="text-muted-foreground mb-4 leading-relaxed">
-                {post.data.description}
-              </p>
-              <time class="text-sm text-muted-foreground">
+              <p class="text-muted-foreground mb-4 leading-relaxed">{post.data.description}</p>
+              <time class="text-muted-foreground text-sm">
                 <FormattedDate date={post.data.pubDate} />
               </time>
             </a>
@@ -31,18 +28,8 @@ const posts = (await getCollection("blog")).sort(
             {/* Decorative separator */}
             <div class="mt-8 text-center">
               <div class="inline-block">
-                <svg
-                  width="120"
-                  height="8"
-                  viewBox="0 0 120 8"
-                  class="text-muted"
-                >
-                  <path
-                    d="M0 4 Q30 0 60 4 T120 4"
-                    stroke="currentColor"
-                    fill="none"
-                    stroke-width="1"
-                  />
+                <svg width="120" height="8" viewBox="0 0 120 8" class="text-muted">
+                  <path d="M0 4 Q30 0 60 4 T120 4" stroke="currentColor" fill="none" stroke-width="1" />
                 </svg>
               </div>
             </div>

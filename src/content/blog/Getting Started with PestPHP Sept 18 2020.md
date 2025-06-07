@@ -3,13 +3,14 @@ title: 'Getting Started with PestPHP'
 pubDate: 'Sept 18 2020'
 description: "PestPHP is a test runner built on top of PHPUnit which makes testing faster, simpler and more productive. Let's walk through how to get started with it"
 ---
+
 # Intro
 
-Just over a year ago, my company decided we had reached the point where we needed to rewrite our web app from scratch. It had become bogged down in technical debt, an aging tech stack and poor infrastructure. 
+Just over a year ago, my company decided we had reached the point where we needed to rewrite our web app from scratch. It had become bogged down in technical debt, an aging tech stack and poor infrastructure.
 
 We decided that one foundational practice we would put in place right from the start with the new app was testing. We had some tests previously, but more as an afterthought rather than a critical step in the build and release process.
 
-For the first 6 months or so we built out our tests using PHPUnit with no issues. It's a solid testing framework! However, I was playing around with new technology one weekend I came across PestPHP and decided to start a new branch and give it a try. I loved it so much that the following week I rewrote all of our tests with it and pushed up a PR, and we haven't looked back since. 
+For the first 6 months or so we built out our tests using PHPUnit with no issues. It's a solid testing framework! However, I was playing around with new technology one weekend I came across PestPHP and decided to start a new branch and give it a try. I loved it so much that the following week I rewrote all of our tests with it and pushed up a PR, and we haven't looked back since.
 
 ## What is it?
 
@@ -17,13 +18,13 @@ For the first 6 months or so we built out our tests using PHPUnit with no issues
 
 [Pest](https://pestphp.com/) is a testing framework which sits on top on PHPUnit. According to the creator it was "carefully crafted to bring the joy oftesting to PHP".
 
-It cuts out a lot of boilerplate that you'd generally need to write when testing with PHPUnit and instead lets you focus on the tests themselves. 
+It cuts out a lot of boilerplate that you'd generally need to write when testing with PHPUnit and instead lets you focus on the tests themselves.
 
 ## Benefits:
 
 ### Beautiful and informative test reporting
 
-I love watching the Pest test runner go through my tests, it feels great watching all those green ticks fly by! 
+I love watching the Pest test runner go through my tests, it feels great watching all those green ticks fly by!
 ![Pest Report](https://res.cloudinary.com/dkn9wtsgs/image/upload/v1600607112/blog/pest_reporting_screenshot.png)
 
 When there is an error, it tries to be as clear as possible about what went wrong so you can get it resolved quickly
@@ -32,6 +33,7 @@ When there is an error, it tries to be as clear as possible about what went wron
 ### Easy to read and write
 
 The code below is all that's required to run a pest test which makes a JSON request to particular path and checks that a particular status code is returned.
+
 ```php
 <?php
 
@@ -42,6 +44,7 @@ test('admin can view insights index page')
 ```
 
 The PHPUnit alternative would be something like:
+
 ```php
 <?php
 
@@ -70,53 +73,57 @@ class InsightsTest extends TestCase
 It may seem like that's not all that much more code, but there's so much unnecessary boilerplate that needs to be written each time for PHPUnit to run your tests - adding namespaces and creating classes and setting up methods in a specific way. With Pest, you just write your tests. They have minimised the boilerplate and tried to make it as readable as possible.
 
 ### Progressive adoption
-All PHPUnit tests are valid Pest tests. This means that you can install Pest on an existing codebase and your tests will all still run fine. You'll even get the pretty error reporting without having to do anything extra. This makes the transition pretty easy - you can refactor in your own time without worrying about breaking things. There's even an automatic PHPUnit to Pest converter called [Drift](https://pestphp.com/docs/guides/drift/) which is being developed to make this process even easier. 
 
+All PHPUnit tests are valid Pest tests. This means that you can install Pest on an existing codebase and your tests will all still run fine. You'll even get the pretty error reporting without having to do anything extra. This makes the transition pretty easy - you can refactor in your own time without worrying about breaking things. There's even an automatic PHPUnit to Pest converter called [Drift](https://pestphp.com/docs/guides/drift/) which is being developed to make this process even easier.
 
 ## Installation
 
-Let's look at how to go about installing PestPHP. 
+Let's look at how to go about installing PestPHP.
 
 [Link to official install docs
 ](https://pestphp.com/docs/installation/)
 
-
 As mentioned, Pest is built on top of PHPUnit, so the first step is to make sure you have a phpunit.xml file at the project root. If you are using Laravel, it usually comes with one in a standard installation. Otherwise, here's [a link to one](https://github.com/pestphp/pest/blob/master/stubs/Laravel/phpunit.xml) on the pest repo
 
 Next, make sure your PHPUnit dependency is ^9.0
+
 ```
 composer require phpunit/phpunit:"^9.0" --dev --update-with-dependencies
 ```
 
 If you are using Laravel, require Collision ^5.0
+
 ```
 composer require nunomaduro/collision:"^5.0" --dev --update-with-dependencies
 ```
 
 Next, require Pest:
+
 ```
 composer require pestphp/pest --dev
 ```
 
-
 It's now time to set up the test suite.
 
 If you are using Laravel, you can go ahead and install the pest plugin for laravel and run the installation:
+
 ```
 composer require pestphp/pest-plugin-laravel --dev && php artisan pest:install
 ```
 
 If you are using another PHP project, you can initialise Pest with the following command:
+
 ```
 ./vendor/bin/pest --init
 ```
 
 To run Pest from the command line, use the following command:
+
 ```
 ./vendor/bin/pest
 ```
 
-And that's it! Pest should run through your tests if you have any, and you are able to get started refactoring existing tests or creating some new ones. 
+And that's it! Pest should run through your tests if you have any, and you are able to get started refactoring existing tests or creating some new ones.
 
 ## Next steps
 
