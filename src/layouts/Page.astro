@@ -1,4 +1,6 @@
 ---
+import Analytics from '@vercel/analytics/astro'
+
 import BaseHead from '@/components/BaseHead.astro'
 import Footer from '@/components/Footer.astro'
 import Header from '@/components/Header.astro'
@@ -14,6 +16,7 @@ import { SITE_TITLE } from '@/consts'
     <Header />
     <main class="mx-auto max-w-4xl px-4 py-8">
       <slot />
+      <Analytics />
     </main>
     <Footer />
   </body>

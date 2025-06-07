@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
 
+import Analytics from '@vercel/analytics/astro'
+
 import BaseHead from '@/components/BaseHead.astro'
 import Footer from '@/components/Footer.astro'
 import FormattedDate from '@/components/FormattedDate.astro'
@@ -79,6 +81,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props
             <hr />
           </div>
           <slot />
+          <Analytics />
         </div>
       </article>
     </main>
