@@ -16,7 +16,7 @@
 /* Light theme (default) */
 :root {
   --background: oklch(98.5% 0 0); /* neutral-50 */
-  --foreground: oklch(20.5% 0 0); /* neutral-900 */
+  --foreground: oklch(37.1% 0 0); /* neutral-700 */
   --muted: oklch(97% 0 0); /* neutral-100 */
   --muted-foreground: oklch(55.6% 0 0); /* neutral-500 */
   --border: oklch(92.2% 0 0); /* neutral-200 */
@@ -26,7 +26,7 @@
 
 /* Dark theme */
 .dark {
-  --background: oklch(20.5% 0 0); /* neutral-900 */
+  --background: oklch(37.1% 0 0); /* neutral-700 */
   --foreground: oklch(98.5% 0 0); /* neutral-50 */
   --muted: oklch(37.1% 0 0); /* neutral-700 */
   --muted-foreground: oklch(87% 0 0); /* neutral-400 */
