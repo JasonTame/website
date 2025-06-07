@@ -19,17 +19,20 @@ A personal blog and website built with [Astro](https://astro.build), featuring f
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/JasonTame/website
 cd website
 ```
 
 2. Install dependencies:
+
 ```bash
 pnpm install
 ```
 
 3. Start the development server:
+
 ```bash
 pnpm dev
 ```
@@ -38,13 +41,12 @@ The site will be available at `http://localhost:4321`
 
 ## Commands
 
-| Command | Action |
-|---------|--------|
-| `pnpm dev` | Start development server |
-| `pnpm build` | Build for production |
-| `pnpm preview` | Preview production build locally |
+| Command            | Action                                |
+| ------------------ | ------------------------------------- |
+| `pnpm dev`         | Start development server              |
+| `pnpm build`       | Build for production                  |
+| `pnpm preview`     | Preview production build locally      |
 | `pnpm astro check` | Check for TypeScript and Astro errors |
-
 
 ## Deployment
 

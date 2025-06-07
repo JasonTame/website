@@ -1,8 +1,12 @@
 ---
-import Page from '@/layouts/Page.astro'
+import { SITE_TITLE } from '@/consts'
+import Layout from '@/layouts/Layout.astro'
+
+const metaTitle = `About | ${SITE_TITLE}`
+const metaDescription = 'About'
 ---
 
-<Page>
+<Layout {metaTitle} {metaDescription}>
   <div class="mx-auto max-w-2xl">
     <h1 class="text-foreground mb-8 text-4xl font-bold">About</h1>
 
@@ -47,4 +51,4 @@ import Page from '@/layouts/Page.astro'
       </p>
     </div>
   </div>
-</Page>
+</Layout>

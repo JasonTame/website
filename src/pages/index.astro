@@ -1,7 +1,12 @@
 ---
-import FormattedDate from '@/components/FormattedDate.astro'
-import Page from '@/layouts/Page.astro'
 import { getCollection } from 'astro:content'
+
+import FormattedDate from '@/components/FormattedDate.astro'
+import { SITE_TITLE } from '@/consts'
+import Layout from '@/layouts/Layout.astro'
+
+const metaTitle = `Home | ${SITE_TITLE}`
+const metaDescription = 'Home'
 
 // Get the most recent blog post
 const allPosts = await getCollection('blog')
@@ -9,7 +14,7 @@ const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pu
 const latestPost = sortedPosts[0]
 ---
 
-<Page>
+<Layout {metaTitle} {metaDescription}>
   <div class="mx-auto max-w-2xl">
     <div class="mb-12 text-center">
       <h1 class="text-foreground mb-6 text-4xl font-bold">Hi, I'm Jason 👋</h1>
@@ -43,4 +48,4 @@ const latestPost = sortedPosts[0]
       )
     }
   </div>
-</Page>
+</Layout>

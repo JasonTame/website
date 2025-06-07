@@ -2,12 +2,16 @@
 import { getCollection } from 'astro:content'
 
 import FormattedDate from '@/components/FormattedDate.astro'
-import Page from '@/layouts/Page.astro'
+import { SITE_TITLE } from '@/consts'
+import Layout from '@/layouts/Layout.astro'
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+
+const metaTitle = `Blog | ${SITE_TITLE}`
+const metaDescription = 'Blog'
 ---
 
-<Page>
+<Layout {metaTitle} {metaDescription}>
   <div class="mx-auto max-w-2xl">
     <h1 class="text-foreground mb-8 text-4xl font-bold">Blog</h1>
 
@@ -38,4 +42,4 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueO
       }
     </div>
   </div>
-</Page>
+</Layout>
