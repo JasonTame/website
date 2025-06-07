@@ -1,10 +1,46 @@
 ---
+import FormattedDate from '@/components/FormattedDate.astro'
 import Page from '@/layouts/Page.astro'
+import { getCollection } from 'astro:content'
+
+// Get the most recent blog post
+const allPosts = await getCollection('blog')
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+const latestPost = sortedPosts[0]
 ---
 
 <Page>
-  <div class="mx-auto max-w-2xl text-center">
-    <h1 class="text-foreground mb-6 text-4xl font-bold">Welcome to your new Astro Blog</h1>
-    <p class="text-muted-foreground mb-8 text-lg">Check out the docs on GitHub to get started.</p>
+  <div class="mx-auto max-w-2xl">
+    <div class="mb-12 text-center">
+      <h1 class="text-foreground mb-6 text-4xl font-bold">Hi, I'm Jason 👋</h1>
+      <p class="text-muted-foreground text-lg">
+        Welcome to my blog! I'm an Engineering Manager at OfferZen based in Cape Town, South Africa. I write about engineering management,
+        web development, and mentoring developers. Thanks for stopping by!
+      </p>
+    </div>
+
+    {
+      latestPost && (
+        <div class="mt-12">
+          <h2 class="text-foreground mb-6 text-2xl font-semibold">Latest Post</h2>
+          <article class="border-border hover:bg-muted/50 rounded-lg border p-6 transition-colors">
+            <h3 class="text-foreground mb-2 text-xl font-semibold">
+              <a href={`/blog/${latestPost.id}/`} class="text-accent hover:text-accent-hover">
+                {latestPost.data.title}
+              </a>
+            </h3>
+            <p class="text-muted-foreground mb-3">{latestPost.data.description}</p>
+            <time class="text-muted-foreground text-sm">
+              <FormattedDate date={latestPost.data.pubDate} />
+            </time>
+          </article>
+          <div class="mt-6 text-center">
+            <a href="/blog" class="text-accent hover:text-accent-hover font-medium">
+              View all posts →
+            </a>
+          </div>
+        </div>
+      )
+    }
   </div>
 </Page>
