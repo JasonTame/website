@@ -6,13 +6,11 @@ import { SITE_TITLE } from '@/consts'
 
 <header class="border-border mb-8 border-b">
   <nav class="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
-    <h2>
-      <a href="/" class="text-foreground hover:text-accent transition-colors">
-        {SITE_TITLE}
-      </a>
-    </h2>
+    <a href="/" class="text-foreground hover:text-accent text-xl transition-colors lg:text-3xl">
+      {SITE_TITLE}
+    </a>
 
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-4 md:gap-6">
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
