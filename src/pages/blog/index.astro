@@ -16,31 +16,27 @@ const posts = (await getCollection("blog")).sort(
   <head>
     <BaseHead title={`Blog | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
   </head>
-  <body
-    class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 min-h-screen"
-  >
+  <body class="bg-background text-foreground min-h-screen">
     <Header />
     <main class="max-w-4xl
     mx-auto
     px-4
     py-8">
       <div class="max-w-2xl mx-auto">
-        <h1 class="text-4xl font-bold mb-8 text-slate-900 dark:text-slate-50">
-          Blog
-        </h1>
+        <h1 class="text-4xl font-bold mb-8 text-foreground">Blog</h1>
 
         <div class="space-y-8">
           {
             posts.map((post) => (
               <article class="group">
                 <a href={`/blog/${post.id}/`} class="block">
-                  <h2 class="text-xl font-semibold text-slate-900 dark:text-slate-50 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors mb-2 underline">
+                  <h2 class="text-xl font-semibold text-foreground group-hover:text-accent transition-colors mb-2 underline">
                     {post.data.title}
                   </h2>
-                  <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  <p class="text-muted-foreground mb-4 leading-relaxed">
                     {post.data.description}
                   </p>
-                  <time class="text-sm text-slate-500 dark:text-slate-500">
+                  <time class="text-sm text-muted-foreground">
                     <FormattedDate date={post.data.pubDate} />
                   </time>
                 </a>
@@ -52,7 +48,7 @@ const posts = (await getCollection("blog")).sort(
                       width="120"
                       height="8"
                       viewBox="0 0 120 8"
-                      class="text-slate-300 dark:text-slate-600"
+                      class="text-muted"
                     >
                       <path
                         d="M0 4 Q30 0 60 4 T120 4"

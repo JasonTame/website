@@ -11,15 +11,19 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body
-    class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 min-h-screen"
+    class="bg-foreground dark:bg-background text-background dark:text-foreground min-h-screen"
   >
     <Header />
     <main class="max-w-4xl mx-auto px-4 py-8">
       <div class="text-center max-w-2xl mx-auto">
-        <h1 class="text-4xl font-bold mb-6 text-slate-900 dark:text-slate-50">
+        <h1
+          class="text-4xl font-bold mb-6 text-foreground dark:text-background"
+        >
           Welcome to your new Astro Blog
         </h1>
-        <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">
+        <p
+          class="text-lg text-muted-foreground dark:text-muted-foreground mb-8"
+        >
           Check out the docs on GitHub to get started.
         </p>
       </div>

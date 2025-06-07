@@ -4,29 +4,22 @@ import DarkModeToggle from "./DarkModeToggle.tsx";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
-<header
-  class="border-b border-slate-600 dark:border-slate-600 border-slate-200 mb-8"
->
-  <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-    <h1 class="text-xl font-semibold">
-      <a
-        href="/"
-        class="text-slate-900 dark:text-slate-50 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-      >
+<header class="border-b border-border mb-8">
+  <nav class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+    <h2>
+      <a href="/" class="text-foreground hover:text-accent transition-colors">
         {SITE_TITLE}
       </a>
-    </h1>
+    </h2>
 
-    <div class="flex items-center gap-6">
-      <div class="flex items-center gap-4">
-        <HeaderLink href="/">Home</HeaderLink>
-        <HeaderLink href="/about">About</HeaderLink>
-        <HeaderLink href="/blog">Blog</HeaderLink>
-      </div>
+    <div class="flex gap-6 items-center">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/blog">Blog</HeaderLink>
+      <HeaderLink href="/about">About</HeaderLink>
+    </div>
 
-      <div class="flex items-center gap-2">
-        <DarkModeToggle client:load />
-      </div>
+    <div class="flex items-center gap-2">
+      <DarkModeToggle client:load />
     </div>
   </nav>
 </header>
