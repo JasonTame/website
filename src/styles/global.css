@@ -1,33 +1,43 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:is(.dark *));
 
-/* Dark theme (default) */
-:root {
-	--background: 15 23 42; /* slate-900 */
-	--foreground: 248 250 252; /* slate-50 */
-	--muted: 64 74 97; /* slate-700 */
-	--muted-foreground: 148 163 184; /* slate-400 */
-	--border: 51 65 85; /* slate-600 */
-	--accent: 59 130 246; /* blue-500 */
-	--accent-hover: 37 99 235; /* blue-600 */
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-border: var(--border);
+	--color-accent: var(--accent);
+	--color-accent-hover: var(--accent-hover);
 }
 
-/* Light theme */
-:root:not(.dark) {
-	--background: 248 250 252; /* slate-50 */
-	--foreground: 15 23 42; /* slate-900 */
-	--muted: 241 245 249; /* slate-100 */
-	--muted-foreground: 100 116 139; /* slate-500 */
-	--border: 226 232 240; /* slate-200 */
-	--accent: 59 130 246; /* blue-500 */
-	--accent-hover: 37 99 235; /* blue-600 */
+/* Light theme (default) */
+:root {
+	--background: oklch(98.5% 0 0); /* neutral-50 */
+	--foreground: oklch(20.5% 0 0); /* neutral-900 */
+	--muted: oklch(97% 0 0); /* neutral-100 */
+	--muted-foreground: oklch(55.6% 0 0); /* neutral-500 */
+	--border: oklch(92.2% 0 0); /* neutral-200 */
+	--accent: oklch(69.6% 0.17 162.48); /* emerald-500 */
+	--accent-hover: oklch(59.6% 0.145 163.225); /* emerald-600 */
+}
+
+/* Dark theme */
+.dark {
+	--background: oklch(20.5% 0 0); /* neutral-900 */
+	--foreground: oklch(98.5% 0 0); /* neutral-50 */
+	--muted: oklch(37.1% 0 0); /* neutral-700 */
+	--muted-foreground: oklch(87% 0 0); /* neutral-400 */
+	--border: oklch(55.6% 0 0); /* neutral-600 */
+	--accent: oklch(69.6% 0.17 162.48); /* emerald-500 */
+	--accent-hover: oklch(59.6% 0.145 163.225); /* emerald-600 */
 }
 
 html {
 	font-family: system-ui, sans-serif;
-	background-color: rgb(var(--background));
-	color: rgb(var(--foreground));
+	background-color: var(--color-background);
+	color: var(--color-foreground);
 }
 
 body {
@@ -39,7 +49,7 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-	color: rgb(var(--foreground));
+	color: var(--color-foreground);
 	font-weight: 600;
 	line-height: 1.2;
 	margin-bottom: 1rem;
@@ -51,29 +61,29 @@ h3 { font-size: 1.5rem; }
 
 p {
 	margin-bottom: 1rem;
-	color: rgb(var(--muted-foreground));
+	color: var(--color-muted-foreground);
 }
 
 a {
-	color: rgb(var(--accent));
+	color: var(--color-accent);
 	text-decoration: none;
 	transition: color 0.2s ease;
 }
 
 a:hover {
-	color: rgb(var(--accent-hover));
+	color: var(--color-accent-hover);
 }
 
 /* Code styling */
 code {
-	background-color: rgb(var(--muted));
+	background-color: var(--color-muted);
 	padding: 0.125rem 0.25rem;
 	border-radius: 0.25rem;
 	font-size: 0.875rem;
 }
 
 pre {
-	background-color: rgb(var(--muted));
+	background-color: var(--color-muted);
 	padding: 1rem;
 	border-radius: 0.5rem;
 	overflow-x: auto;
@@ -93,7 +103,7 @@ ul, ol {
 
 li {
 	margin-bottom: 0.5rem;
-	color: rgb(var(--muted-foreground));
+	color: var(--color-muted-foreground);
 }
 
 /* Images */
@@ -105,17 +115,17 @@ img {
 
 /* Blockquotes */
 blockquote {
-	border-left: 4px solid rgb(var(--accent));
+	border-left: 4px solid var(--color-accent);
 	padding-left: 1rem;
 	margin: 1rem 0;
 	font-style: italic;
-	color: rgb(var(--muted-foreground));
+	color: var(--color-muted-foreground);
 }
 
 /* Horizontal rule */
 hr {
 	border: none;
-	border-top: 1px solid rgb(var(--border));
+	border-top: 1px solid var(--color-border);
 	margin: 2rem 0;
 }
 
